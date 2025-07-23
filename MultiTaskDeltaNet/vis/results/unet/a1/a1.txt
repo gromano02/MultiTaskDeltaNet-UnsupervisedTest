@@ -1,0 +1,59 @@
+unet_pred val: 64
+pred: 2440
+validation results:
+Overall change detection:
+A1_acc: 0.95732 miou: 0.76096 mf1: 0.85912 iou_0: 0.96156 iou_1: 0.66384 iou_2: 0.66384 iou_3: 0.75462 F1_0: 0.98040 F1_1: 0.79796 F1_2: 0.79796 F1_3: 0.86015 precision_0: 0.99353 precision_1: 0.72471 precision_2: 0.72471 precision_3: 0.82869 recall_0: 0.96762 recall_1: 0.88767 recall_2: 0.88767 recall_3: 0.89409 
+Overall lable (segmentation) prediction:
+A1_acc: 0.97868 miou: 0.87965 mf1: 0.93312 iou_0: 0.78240 iou_1: 0.97691 F1_0: 0.87791 F1_1: 0.98832 precision_0: 0.82561 precision_1: 0.99435 recall_0: 0.93730 recall_1: 0.98237 
+
+
+unet_pred test: 41
+pred: 925
+test results:
+Overall change detection:
+A1_acc: 0.98217 miou: 0.77973 mf1: 0.87092 iou_0: 0.98367 iou_1: 0.67654 iou_2: 0.67654 iou_3: 0.78219 F1_0: 0.99177 F1_1: 0.80707 F1_2: 0.80707 F1_3: 0.87778 precision_0: 0.99710 precision_1: 0.73581 precision_2: 0.73581 precision_3: 0.82725 recall_0: 0.98649 recall_1: 0.89361 recall_2: 0.89361 recall_3: 0.93489 
+Overall lable (segmentation) prediction:
+A1_acc: 0.99117 miou: 0.89361 mf1: 0.94102 iou_0: 0.79635 iou_1: 0.99086 F1_0: 0.88663 F1_1: 0.99541 precision_0: 0.83189 precision_1: 0.99807 recall_0: 0.94909 recall_1: 0.99276 
+
+
+['101', '102_R1', '102_R2', '103', '201', '203', '301', '302']
+val_test1: (46, 256, 256, 3)
+val_test2: (18, 256, 256, 3)
+test_test1: (27, 256, 256, 3)
+test_test2: (14, 256, 256, 3)
+unet_pred 46
+pred: 2116
+103 results:
+Overall change detection:
+A1_acc: 0.95289 miou: 0.75746 mf1: 0.85680 iou_0: 0.95685 iou_1: 0.65882 iou_2: 0.65882 iou_3: 0.75534 F1_0: 0.97795 F1_1: 0.79433 F1_2: 0.79433 F1_3: 0.86062 precision_0: 0.99323 precision_1: 0.71744 precision_2: 0.71744 precision_3: 0.82784 recall_0: 0.96313 recall_1: 0.88967 recall_2: 0.88967 recall_3: 0.89610 
+Overall lable (segmentation) prediction:
+model save at: 455
+A1_acc: 0.97317 miou: 0.87393 mf1: 0.92989 iou_0: 0.77746 iou_1: 0.97040 F1_0: 0.87480 F1_1: 0.98498 precision_0: 0.81673 precision_1: 0.99345 recall_0: 0.94176 recall_1: 0.97664 
+
+
+unet_pred 18
+pred: 324
+301 results:
+Overall change detection:
+A1_acc: 0.98624 miou: 0.80168 mf1: 0.88615 iou_0: 0.98959 iou_1: 0.74062 iou_2: 0.74062 iou_3: 0.73591 F1_0: 0.99477 F1_1: 0.85098 F1_2: 0.85098 F1_3: 0.84787 precision_0: 0.99526 precision_1: 0.84087 precision_2: 0.84087 precision_3: 0.85193 recall_0: 0.99427 recall_1: 0.86135 recall_2: 0.86135 recall_3: 0.84385 
+Overall lable (segmentation) prediction:
+A1_acc: 0.99276 miou: 0.90634 mf1: 0.94872 iou_0: 0.82017 iou_1: 0.99251 F1_0: 0.90120 F1_1: 0.99624 precision_0: 0.89628 precision_1: 0.99645 recall_0: 0.90617 recall_1: 0.99603 
+
+
+unet_pred 27
+pred: 729
+201 results:
+Overall change detection:
+A1_acc: 0.98073 miou: 0.73033 mf1: 0.83636 iou_0: 0.98170 iou_1: 0.62440 iou_2: 0.62440 iou_3: 0.69080 F1_0: 0.99076 F1_1: 0.76878 F1_2: 0.76878 F1_3: 0.81713 precision_0: 0.99703 precision_1: 0.68171 precision_2: 0.68171 precision_3: 0.72013 recall_0: 0.98458 recall_1: 0.88135 recall_2: 0.88135 recall_3: 0.94432 
+Overall lable (segmentation) prediction:
+A1_acc: 0.99002 miou: 0.83593 mf1: 0.90293 iou_0: 0.68206 iou_1: 0.98980 F1_0: 0.81098 F1_1: 0.99488 precision_0: 0.71808 precision_1: 0.99838 recall_0: 0.93149 recall_1: 0.99140 
+
+
+unet_pred 14
+pred: 196
+203 results:
+Overall change detection:
+A1_acc: 0.98752 miou: 0.87157 mf1: 0.92992 iou_0: 0.99141 iou_1: 0.82090 iou_2: 0.82090 iou_3: 0.85307 F1_0: 0.99569 F1_1: 0.90164 F1_2: 0.90164 F1_3: 0.92071 precision_0: 0.99738 precision_1: 0.88348 precision_2: 0.88348 precision_3: 0.91251 recall_0: 0.99400 recall_1: 0.92057 recall_2: 0.92057 recall_3: 0.92905 
+Overall lable (segmentation) prediction:
+A1_acc: 0.99339 miou: 0.94673 mf1: 0.97206 iou_0: 0.90050 iou_1: 0.99297 F1_0: 0.94764 F1_1: 0.99647 precision_0: 0.93406 precision_1: 0.99745 recall_0: 0.96163 recall_1: 0.99550 
+
