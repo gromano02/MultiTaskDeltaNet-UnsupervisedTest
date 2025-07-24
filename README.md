@@ -47,3 +47,34 @@ To help you better understand the dataset, here are a few key points:
    - The "results" folder contains images after preprocessing, which will have filament images without overlapping structures. Similarly, the "area1," "area2," and "area1-2" subfolders contain the A1 labels, A2 labels, and the difference between A1 and A2 (A1 - A2), respectively. The "img" subfolder in the results folder also contains filament images. It’s important to note that the 102 folder is a special case; it only contains the original images, while the result images are located in the 102_R1 and 102_R2 folders.
 
 3. **Testing the Code:** To test the code, please download the entire dataset, as the code is designed to read the dataset based on this specific structure.
+
+## Code
+The code folder contains all scripts required to train the models, perform hyperparameter search, and generate predictions. It also includes a checkpoints folder with saved models and a vis folder that holds raw prediction outputs for each model.
+
+To help you better understand and use the code, here are a few key points:
+
+1. **Model Training:** 
+  - MTDN Model: We have separate code for the MTDN and U-net models. For the MTDN model, the file `main_siam_train.py` allows you to train various versions of MTDN. You can select the `trainer_siam` option for MTDN based on whether you want no_init, init1, or two init2. If you wish to train any of these versions, make sure to select and comment out the relevant lines in `trainer_siam.py`. This file contains detailed instructions on how to proceed. If you want to assess model performance immediately after training, you will also need to modify `test_siam_cd.py` accordingly. For the `trainer_siam_ablation`, this trains a single-task model. To do this, you need to train MTDN for A1 and A2 separately, which again requires selecting and commenting out the appropriate lines in `trainer_siam_ablation.py`. Each of these files includes comments to assist you in running the code and training the model.
+  - U-net Model: For the U-net model, the process is similar to training the MTDN single-task model. You will need to select and comment on the relevant lines in `trainer_unet.py` for either A1 or A2.
+
+2. **Model Testing:**
+
+For testing pre-trained models, use pred_siam.py (for all MTDN variants) and pred_unet.py (for U-net). Again, select the model variant by modifying the appropriate lines.
+
+3. **Hyperparameter Tuning:**
+ - The default training scripts include fixed seeds and recommended hyperparameters to reproduce results in the paper.
+ - To run your own hyperparameter search, use main_siam_raytune.py for MTDN or main_unet_raytune.py for U-net. Remember to comment/uncomment lines to choose the desired model variant.
+
+4. **Model Outputs:**
+
+ - Trained models are saved in the checkpoints folder.
+
+ - Prediction plots and performance summaries are saved in the vis folder. Additional evaluation results can be found in the Results folder.
+
+5. **Path Configuration:**
+
+ - Before running any code, update the paths in the scripts to match the location of your dataset, model checkpoints, and output directories.
+
+6. **Special Dataset Handling:**
+
+ - Some files (e.g., those with _phy) are designed to extract extra information from kinetic_curves.xlsx in addition to image data. These are included for future research use and do not affect current functionality.
