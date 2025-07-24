@@ -42,19 +42,23 @@ To help you better understand the dataset, here are a few key points:
 
 1. **Video IDs:** The available video IDs are 101, 102, 103, 201, 203, 301, and 302. There is a relationship between video IDs and filament IDs mentioned in the paper. The training dataset consists of video IDs 102_R1, 102_R2, and 302, which correspond to filament IDs 1, 2, and 3. The validation dataset includes video IDs 103 and 301, related to filament IDs 4 and 5. The test dataset contains video IDs 201 and 203, corresponding to filament IDs 6 and 7. For quality reasons, dataset 101 has not been used.
 
-2. **Folder Structure:** Each video ID folder contains two subfolders: "original" and "results." 
+2. **Time:** There is a relationship between Frame and Time in the 'kinetic_curves.xlsx' file. The image names and model prediction results are saved using Frame numbers. However, in the paper, we report the results using Time numbers. For instance, Frame 88 corresponds to Time 0.
+
+3. **Folder Structure:** Each video ID folder contains two subfolders: "original" and "results." 
    - The "original" folder holds all the original images without cropping. Within this folder, the "area1" subfolder contains images labeled A1, the "area2" subfolder contains images labeled A2, and the "img" subfolder has the original filament images. 
    - The "results" folder contains images after preprocessing, which will have filament images without overlapping structures. Similarly, the "area1," "area2," and "area1-2" subfolders contain the A1 labels, A2 labels, and the difference between A1 and A2 (A1 - A2), respectively. The "img" subfolder in the results folder also contains filament images. It’s important to note that the 102 folder is a special case; it only contains the original images, while the result images are located in the 102_R1 and 102_R2 folders.
 
-3. **Testing the Code:** To test the code, please download the entire dataset, as the code is designed to read the dataset based on this specific structure.
+4. **Testing the Code:** To test the code, please download the entire dataset, as the code is designed to read the dataset based on this specific structure.
 
 ## Code
 The code folder contains all scripts required to train the models, perform hyperparameter search, and generate predictions. It also includes a checkpoints folder with saved models and a vis folder that holds raw prediction outputs for each model.
 
 To help you better understand and use the code, here are a few key points:
 
-1. **Model Training:** 
+1. **Model Training:**
+   
   - MTDN Model: We have separate code for the MTDN and U-net models. For the MTDN model, the file `main_siam_train.py` allows you to train various versions of MTDN. You can select the `trainer_siam` option for MTDN based on whether you want no_init, init1, or two init2. If you wish to train any of these versions, make sure to select and comment out the relevant lines in `trainer_siam.py`. This file contains detailed instructions on how to proceed. If you want to assess model performance immediately after training, you will also need to modify `test_siam_cd.py` accordingly. For the `trainer_siam_ablation`, this trains a single-task model. To do this, you need to train MTDN for A1 and A2 separately, which again requires selecting and commenting out the appropriate lines in `trainer_siam_ablation.py`. Each of these files includes comments to assist you in running the code and training the model.
+   
   - U-net Model: For the U-net model, the process is similar to training the MTDN single-task model. You will need to select and comment on the relevant lines in `trainer_unet.py` for either A1 or A2.
 
 2. **Model Testing:**
@@ -78,3 +82,33 @@ For testing pre-trained models, use pred_siam.py (for all MTDN variants) and pre
 6. **Special Dataset Handling:**
 
  - Some files (e.g., those with _phy) are designed to extract extra information from kinetic_curves.xlsx in addition to image data. These are included for future research use and do not affect current functionality.
+
+## Results
+This section includes both the numerical results and visual predictions for each model. Results are organized by model type, validation/test dataset, and prediction category.
+
+1. **Folder Structure:**
+Each model folder (no_init, init1, init2 and U-net) contains results for both the validation and test datasets (103, 201, 203,301). Inside each dataset subfolder, you will find:
+
+ - 'area1' and 'area2': Raw model prediction masks for A1 and A2.
+
+ - 'img': Original filament images used for inference.
+
+ - 'output': Combined A1 + A2 visualizations, as presented in the paper.
+
+ - 'F1_A1.txt' and 'F1_A2.txt': F1 scores for each sample, saved as plain text.
+
+ - 'groundtruth': Ground truth masks for A1 and A2 (available for both validation and test sets).
+
+2. **Confusion Matrix Visualizations:**
+ - The Comparison/ folder includes confusion matrix plots shown in Figures 6 and 7 of the paper.
+
+ - These plots are provided for MTDN_init2 and U-Net, as they are the primary models discussed in the paper.
+
+ - If you would like to generate confusion matrices for other variants (e.g., no_init, init1, etc.), use:
+
+   - A1_comparison.ipynb
+
+   - A2_comparison.ipynb
+
+3. **Images for README:**
+ - The image_github/ folder includes curated visualizations used in this README.md file.
