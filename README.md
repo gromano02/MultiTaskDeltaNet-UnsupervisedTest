@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1024057265.svg)](https://doi.org/10.5281/zenodo.16415664)
 # MultiTaskDeltaNe
 Change Detection-based Image Segmentation for operando ETEM with Application to Carbon Gasification Kinetics
 ## Network
