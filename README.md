@@ -36,4 +36,8 @@ pip install "ray[tune]"  #### if hyper-parameter searching needed (find best hyp
 ```
 
 ## Dataset
+In the Dataset file, it contains folder for each video ID. It also contain 'kinetic_curves.xlsx' files which includes all the detailed information for each video ID, such as diameter, start time, and end time and so on. 
+
+To help you better understand the dataset, there are few points need to be mentioned:
+First, there are video ID: 101, 102, 103, 201, 203, 301, and 302. There is a relationship between video ID and filament ID in the paper. Training dataset is video ID of 102_R1, 102_R2, and 302 which is related to filament ID 1, 2 and 3. Validation dataset is video ID of 103 and 301 which is related to filament ID 4 and 5. Test dataset video ID of 201 and 203 which is related to filament ID 6 and 7. For the image quality concern, we did not use 101 dataset. 
 
