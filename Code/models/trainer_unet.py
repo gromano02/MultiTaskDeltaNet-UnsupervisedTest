@@ -16,7 +16,6 @@ from misc.metric_tool import ConfuseMatrixMeter
 from models.losses import cross_entropy
 import models.losses as losses
 from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss, reg_term, reg_term_phy, cross_entropy
-from models.loss_reg import reg_phy
 from models.load_unet import load_dataset
 
 ##### When you need to run the prediction for a1 or a2, 
