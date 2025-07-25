@@ -4,7 +4,7 @@ Change Detection-based Image Segmentation for operando ETEM with Application to 
 ## Network
 <img src="https://github.com/niuyushuo/MultiTaskDeltaNet/blob/7f950176eab5de6c4512032d140f1fda05d82265/Results/image_github/Model_arch.png" width="500" height="400">
 
-## Installition
+## Installation
 Create a conda environment:
 ```
 conda create -n python3.10_pytorch2.0 python=3.10
@@ -24,7 +24,7 @@ Install pytorch:
 ```
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
-Install the rest packages:
+Install the remaining packages:
 ```
 conda install matplotlib
 conda install esri::einops
@@ -32,7 +32,7 @@ conda install anaconda::pandas
 conda install anaconda::scikit-learn
 conda install anaconda::seaborn
 conda install anaconda::openpyxl
-pip install "ray[tune]"  #### if hyper-parameter searching needed (find best hyper-parameter for your case)
+pip install "ray[tune]"  #### if hyper-parameter tuning needed
 
 ```
 
