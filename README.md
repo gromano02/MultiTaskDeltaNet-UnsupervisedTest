@@ -83,7 +83,7 @@ For testing pre-trained models, use pred_siam.py (for all MTDN variants) and pre
 
 
 ## Results
-This section includes both the numerical results and visual predictions for each model. Results are organized by model type, validation/test dataset, and prediction category.
+This section includes both the numerical results and visual predictions for each model. The overall performance is saved in the "performance_F1_individual.xlsx" file. Results are organized by model type, validation/test dataset, and prediction category.
 
 1. **Folder Structure:**
 Each model folder (no_init, init1, init2 and U-net) contains results for both the validation and test datasets (103, 201, 203,301). Inside each dataset subfolder, you will find:
