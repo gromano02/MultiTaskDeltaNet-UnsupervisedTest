@@ -13,9 +13,8 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from misc.metric_tool import ConfuseMatrixMeter
-from models.losses import cross_entropy
 import models.losses as losses
-from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss, reg_term, reg_term_phy, cross_entropy
+from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss, cross_entropy
 from models.load_unet import load_dataset
 
 ##### When you need to run the prediction for a1 or a2, 
@@ -73,7 +72,7 @@ def CDTrainer():
     best_epoch_id2 = 0
     epoch_to_start = 0
     max_num_epochs = 500
-    #max_num_epochs = 15   ###for test
+    max_num_epochs = 2   ###for test
 
     global_step = 0
     steps_per_epoch = len(dataloaders['train'])
@@ -145,12 +144,6 @@ def CDTrainer():
 
             G_loss = _pxl_loss(G_pred, gt)
 
-            if epoch_id>=2000: #0(reg) ##### Epoch to apply regularization 
-               ##### Add reg term
-               y1  = batch['y1'].to(device)
-
-            else:
-                G_loss = G_loss   #### Loss for training
                
             G_loss.backward()
             optimizer_G.step()

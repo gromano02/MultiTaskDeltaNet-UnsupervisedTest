@@ -45,7 +45,6 @@ def CDEva():
     path='/home/yun13001/dataset/Carbon/tianyu_new_data/New_distribution/'    ### data location
 
     dirnames = os.listdir(path)
-    dirnames.remove('kinetic_curves.xlsx')
     dirnames=sorted(dirnames, key=lambda s: float(re.findall(r'\d+', s)[0]))
     print(dirnames)    
 
@@ -72,7 +71,8 @@ def CDEva():
 
     net_G = UNet(in_channels=3, out_channels=2, init_features=32)
 
-    PATH ='/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/checkpoints/unet/a1_results/best_a1.pt'
+    #PATH ='/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/checkpoints/unet/a1_results/best_a1.pt'
+    PATH ='/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/Code/checkpoints/unet/a1_results/best_a1.pt'
     #PATH ='/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/checkpoints/unet/a2_results/best_a2.pt' 
 
     running_metric1 = ConfuseMatrixMeter(n_class=2)
@@ -83,7 +83,6 @@ def CDEva():
     checkpoint = torch.load(PATH,weights_only=False)
     net_G.load_state_dict(checkpoint['model_G_state_dict'])
     epoch_save = checkpoint['epoch']
-    print('epoch_save',epoch_save)
 
     device = "cpu"
     if torch.cuda.is_available():
@@ -143,7 +142,8 @@ def CDEva():
 
             pred1 = np.stack([pred1, pred1, pred1], axis=-1)
             pred1 = pred1.astype(np.float64)
-            vis_dir1 = '/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/vis/results/unet/a1'    #### save the plots
+            #vis_dir1 = '/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/vis/results/unet/a1'    #### save the plots
+            vis_dir1 = '/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/Code/vis/results/unet/a1'
             #vis_dir2 = '/home/yun13001/code/Carbon/model_reg/tianyu_new_data/code_github/cv_github/vis/results/unet/a2'
             file_name1 = os.path.join(vis_dir1, name)
             #file_name2 = os.path.join(vis_dir2, name)
@@ -177,8 +177,6 @@ def CDEva():
     val_acc1 = scores1['mf1']
     print('test:')
     print(val_acc1)
-
-    print('model save at:',epoch_save)
 
     message = 'A1_'
     #message = 'A2_'

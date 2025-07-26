@@ -17,23 +17,14 @@ def load_dataset_s():
         input_data = (input_data) * 255
         return input_data.astype(np.uint8)
 
-    palette = np.array([[1, 0, 0],  # "no change"
-                    [0, 1, 0],  # "over extrude(1)"
-                    [0, 0, 1]], dtype='float32')  # "under extrude (-1)"
-
-    palette2 = np.array([[1, 1, 1],  # "no change"
-                    [0.5, 0, 0],  # "over extrude(1)"
-                    [0, 0.5, 0]], dtype='float32')  # "under extrude (-1)"
-
     palette3 = np.array([[1, 1, 1],  # "no change"
                     [0.5, 0, 0],  # "appearing(1)"
                     [0, 0.5, 0],  # "disappearing(-1)"
-                    [0.4,0.4,0.5]], dtype='float32')  # "overlap(2)"  [0.4,0.4,0.5]
+                    [0.4,0.4,0.5]], dtype='float32')  # "overlap(2)"  
 
     path='/home/yun13001/dataset/Carbon/tianyu_new_data/New_distribution/'
 
     dirnames = os.listdir(path)
-    dirnames.remove('kinetic_curves.xlsx')
     dirnames=sorted(dirnames, key=lambda s: float(re.findall(r'\d+', s)[0]))
     #print(dirnames)
 

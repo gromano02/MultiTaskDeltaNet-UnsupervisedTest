@@ -15,7 +15,6 @@ from models.load_unet import load_dataset
 from models.load_unet_s import load_dataset_s
 
 from utils import de_norm
-from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import utils
 

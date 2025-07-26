@@ -19,7 +19,7 @@ from models.sia_two_out_four_class import Siamese      ##### for no_init
 from misc.metric_tool import ConfuseMatrixMeter
 from models.losses import cross_entropy
 import models.losses as losses
-from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss, reg_term, reg_term_phy
+from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss
 from models.load_cv2 import load_dataset
 
 ##### When you need to run the training for no_init, init1 or init2, 

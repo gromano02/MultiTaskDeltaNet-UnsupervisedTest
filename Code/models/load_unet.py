@@ -19,7 +19,6 @@ def load_dataset():
     path='/home/yun13001/dataset/Carbon/tianyu_new_data/New_distribution/'
 
     dirnames = os.listdir(path)
-    dirnames.remove('kinetic_curves.xlsx')
     dirnames=sorted(dirnames, key=lambda s: float(re.findall(r'\d+', s)[0]))
     print(dirnames)  
 
@@ -37,10 +36,6 @@ def load_dataset():
 
         file_names[dirname]=filenames_x
 
-
-    #train_name=['101', '103', '201', '203', '301', '302']
-    #val_name = ['102_R1']
-    #test_name =['102_R2']
 
     train_name=['102_R1','102_R2', '302']
     val_name = ['103','301']

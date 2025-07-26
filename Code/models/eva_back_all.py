@@ -18,7 +18,7 @@ from torchvision import transforms
 import torchvision.transforms.functional as TF
 
 from utils import de_norm
-from sklearn.metrics import confusion_matrix
+#from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import utils
 
@@ -40,7 +40,6 @@ def CDEva(model_path,res_path,names):  ### name:val or test
 
     path='/home/yun13001/dataset/Carbon/tianyu_new_data/New_distribution/'
     dirnames = os.listdir(path)
-    dirnames.remove('kinetic_curves.xlsx')
     dirnames=sorted(dirnames, key=lambda s: float(re.findall(r'\d+', s)[0]))
     print(dirnames)
 

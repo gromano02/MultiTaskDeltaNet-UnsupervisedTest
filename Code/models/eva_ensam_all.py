@@ -33,7 +33,7 @@ def denormalize(input_data):
 palette = np.array([[1, 1, 1],  # "no change"
                     [0.5, 0, 0],  # "appearing(1)"
                     [0, 0.5, 0],  # "disappearing(-1)"
-                    [0.4,0.4,0.5]], dtype='float32')  # "overlap(2)"  [0.4,0.4,0.5]
+                    [0.4,0.4,0.5]], dtype='float32')  # "overlap(2)"
 
 
 def CDEva(model_path,res_path,names):
@@ -41,7 +41,6 @@ def CDEva(model_path,res_path,names):
     path='/home/yun13001/dataset/Carbon/tianyu_new_data/New_distribution/'
 
     dirnames = os.listdir(path)
-    dirnames.remove('kinetic_curves.xlsx')
     dirnames=sorted(dirnames, key=lambda s: float(re.findall(r'\d+', s)[0]))
     print(dirnames)
 

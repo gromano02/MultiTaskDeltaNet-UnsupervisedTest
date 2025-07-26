@@ -14,8 +14,7 @@ from torch.utils.data import DataLoader
 from misc.metric_tool import ConfuseMatrixMeter
 from models.losses import cross_entropy
 import models.losses as losses
-from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss, reg_term, reg_term_phy
-from models.loss_reg import reg_phy
+from models.losses import get_alpha, get_alpha1, get_alpha2, softmax_helper, FocalLoss, mIoULoss, mmIoULoss
 from models.load_unet import load_dataset
 
 import ray
@@ -139,12 +138,6 @@ def CDTrainer(config):
 
             G_loss = _pxl_loss(G_pred, gt)
 
-            if epoch_id>=1000: #0(reg)  #100(no reg)   ##### Epoch to apply regularization 
-               ##### Reg term
-               y1  = batch['y1'].to(device) #### to add reg term
-
-            else:
-                G_loss = G_loss   #### Loss for training
 
             G_loss.backward()
             optimizer_G.step()
@@ -189,12 +182,7 @@ def CDTrainer(config):
                 #gt = batch['L1'].to(device).long()
                 gt = batch['L2'].to(device).long()
 
-                ##### Reg term
-                #reg = reg_term(gt1,gt2,G_pred1,G_pred2)
-
                 G_loss = _pxl_loss(G_pred, gt)
-                ####
-                #G_loss = G_loss + reg
 
                 #####Print statistics
                 val_loss += G_loss.cpu().numpy()
@@ -214,9 +202,6 @@ def CDTrainer(config):
         print(val_loss / val_steps)
         print(val_acc)
         print('\n')
-
-        #vali_loss.append(val_loss / val_steps)
-        #vali_acc.append(val_acc)
 
 
         checkpoint_data = {

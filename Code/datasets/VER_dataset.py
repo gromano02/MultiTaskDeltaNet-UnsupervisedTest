@@ -9,7 +9,6 @@ import numpy as np
 from torch.utils import data
 
 from datasets.data_utils import CDDataAugmentation
-#from data_utils import CDDataAugmentation
 
 class ImageDataset(data.Dataset):
     """Material dataloder"""
@@ -37,9 +36,6 @@ class ImageDataset(data.Dataset):
                 img_size=self.img_size
             )
     def __getitem__(self, index):
-        #name = self.img_name_list[index]
-        #A_path = get_img_path(self.root_dir, self.img_name_list[index % self.A_size])
-        #B_path = get_img_post_path(self.root_dir, self.img_name_list[index % self.A_size])
 
         img = np.asarray(self.ref)
         img_B = np.asarray(self.res)
@@ -62,9 +58,6 @@ class VERDataset(ImageDataset):
         self.label = label
 
     def __getitem__(self, index):
-        #name = self.img_name_list[index]
-        #A_path = get_img_path(self.root_dir, self.img_name_list[index % self.A_size])
-        #B_path = get_img_post_path(self.root_dir, self.img_name_list[index % self.A_size])
 
         img = np.asarray(self.ref[index % self.A_size])
         img_B = np.asarray(self.res[index % self.A_size])
@@ -72,10 +65,7 @@ class VERDataset(ImageDataset):
         label = np.array(self.label[index % self.A_size], dtype=np.uint8)
         # if you are getting error because of dim mismatch ad [:,:,0] at the end
 
-        #print('image size test:',img.shape,img_B.shape,label.shape)
-
         [img, img_B], [label] = self.augm.transform([img, img_B], [label], to_tensor=self.to_tensor)
-        # print(label.max())
 
         return {'A': img, 'B': img_B, 'L': label}
 
@@ -99,8 +89,5 @@ class CARDataset(ImageDataset):
         # if you are getting error because of dim mismatch ad [:,:,0] at the end
 
         [img, img_B], [label1,label2] = self.augm.transform([img, img_B], [label1,label2], to_tensor=self.to_tensor)
-        # print(label.max())
-        ##print('index:',index)
-        ##print('test!!')
 
         return {'A': img, 'B': img_B, 'L1': label1, 'L2': label2}
