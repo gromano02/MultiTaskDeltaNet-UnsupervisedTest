@@ -27,7 +27,7 @@ from models.load_cv2 import load_dataset
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"               ##### if train model on particulart GPU
-torch.use_deterministic_algorithms(True)               ##### fix seed to reproduce results (delelte it if not needed)
+torch.use_deterministic_algorithms(True)               ##### fix seed to reproduce results (delete it if not needed)
 
 def CDTrainer():
 
